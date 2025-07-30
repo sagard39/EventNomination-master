@@ -1,0 +1,1 @@
+alter table cricket_camp add COACHING_CAMP varchar2(75)

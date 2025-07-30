@@ -1,0 +1,667 @@
+create or replace
+trigger equi_salary
+  after insert or update on sumo_emp
+  for each row
+declare
+  max_allow sumo_emp.susalary%type
+  
+  begin
+    select min(susalary) * 25 into max_allow from sumo_emp
+    
+    if max_allow < :new.susalary
+    then
+      update sumo_emp
+        set susalary = max_allow
+        where suempid  = :new.suempid;
+   end if;
+end equi_salary;
+
+
+insert into sumo_emp values (1,'aastha',1,1000)
+
+ //set susalary = max_allow
+        //where suempid  = :new.suempid;
+		
+		
+		insert into tempo values(:new.suempid, max_allow);
+		
+		 //max_allow sumo_emp.susalary%type
+		 
+		 
+		 
+		 
+		 create or replace
+trigger equi_salary
+  for insert or update on sumo_emp
+ compound trigger
+
+type temp_t is record(
+  
+  suempid sumo_emp.suempid%type,
+  susalary sumo_emp.susalary%type
+ 
+ ) ;
+ 
+ type temp_r is table of temp_t index by pls_integer;
+ 
+ temp_l temp_r ;
+ 
+ 
+  after each row is
+  begin
+    temp_l(temp_l.count+1).suempid := :new.suempid;
+    temp_l(temp_l.count).susalary := :new.susalary;
+    
+  end after each row;
+  
+  
+ after statement is
+  max_allow sumo_emp.susalary%type;
+  
+  begin
+    select min(susalary) * 25 into max_allow from sumo_emp;
+      
+  for i in temp_l.first .. temp_l.last loop
+    if max_allow < temp_l(i).susalary
+    then
+      update sumo_emp
+        set susalary = max_allow where suempid  = temp_l(i).suempid;
+   end if;
+  end loop;
+  
+  end after statement;
+
+ 
+
+end equi_salary;
+
+   
+   
+   
+   begin 
+   update sumo_emp 
+      set susalary = 100000 
+    where suempid = 4; 
+end;
+
+
+
+
+
+
+
+
+
+
+
+		 create or replace
+trigger equi_salary
+  for insert or update on sumo_emp
+ compound trigger
+
+type temp_t is record(
+  
+  suempid sumo_emp.suempid%type,
+  susalary sumo_emp.susalary%type,
+  sudepno sumo_emp.sudepno%type
+ 
+ ) ;
+ 
+ type temp_r is table of temp_t index by pls_integer;
+ 
+ temp_l temp_r ;
+ 
+ 
+  after each row is
+  begin
+    temp_l(temp_l.count+1).suempid := :new.suempid;
+    temp_l(temp_l.count).susalary := :new.susalary;
+    temp_l(temp_l.count).sudepno := :new.sudepno;
+    
+  end after each row;
+  
+  
+ after statement is
+  max_allow sumo_emp.susalary%type;
+  max_dep sumo_emp.sudepno%type;
+  
+  begin
+    select min(susalary) * 25 into max_allow from sumo_emp;
+        
+  for i in temp_l.first .. temp_l.last loop
+    if max_allow < temp_l(i).susalary
+    then
+      update sumo_emp
+        set sudepno = 5
+		where suempid  = temp_l(i).suempid;
+        
+   end if;
+  end loop;
+  
+  end after statement;
+
+ 
+
+end equi_salary;
+
+
+create or replace
+trigger equi_salary
+  after insert or update on sumo_emp
+  for each row
+declare
+  max_allow sumo_emp.susalary%type;
+  
+  begin
+    select min(susalary) * 25 into max_allow from sumo_emp;
+    
+    if max_allow < :new.susalary
+    then
+      update sumo_emp
+        set suempname = 'jess'
+        where suempid  = :new.suempid;
+   end if;
+end equi_salary;
+
+ 
+ create or replace
+trigger equi_salary
+  for insert or update on sumo_emp
+ compound trigger
+
+type temp_t is record(
+  
+  suempid sumo_emp.suempid%type,
+  susalary sumo_emp.susalary%type
+ 
+ );
+ 
+ type temp_r is table of temp_t index by pls_integer;
+ 
+ temp_l temp_r ;
+ 
+ 
+  after each row is
+  begin
+    temp_l(temp_l.count+1).suempid := :new.suempid;
+    temp_l(temp_l.count).susalary := :new.susalary;
+    
+ end after each row;
+  
+  
+ after statement is
+  max_allow sumo_emp.susalary%type;
+ 
+  
+  begin
+    select min(susalary) * 25 into max_allow from sumo_emp;
+        
+  for i in temp_l.first .. temp_l.last loop
+    if max_allow < temp_l(i).susalary
+    then
+      update sumo_emp
+        set suempname = 'jess' where suempid  = temp_l(i).suempid;
+        
+   end if;
+  end loop;
+  
+  end after statement;
+  
+end equi_s
+
+
+create or replace
+trigger equi_salary
+  for insert or update on sumo_emp
+ compound trigger
+
+type temp_t is record(
+  
+  suempid sumo_emp.suempid%type,
+  susalary sumo_emp.susalary%type
+ 
+ );
+ 
+ type temp_r is table of temp_t index by pls_integer;
+ 
+ temp_l temp_r ;
+ 
+ 
+  before each row is
+  begin
+    temp_l(temp_l.count+1).suempid := :new.suempid;
+    temp_l(temp_l.count).susalary := :new.susalary;
+    
+ end before each row;
+  
+  
+ before statement is
+  max_allow sumo_emp.susalary%type;
+ 
+  
+  begin
+    select min(susalary) * 25 into max_allow from sumo_emp;
+        
+  for i in temp_l.first .. temp_l.last loop
+    if max_allow < temp_l(i).susalary
+    then
+      update sumo_emp
+        set suempname = 'jessicaaaaa' where suempid  = temp_l(i).suempid;
+        commit;
+   end if;
+  end loop;
+  
+  end before statement;
+  
+end equi_salary;
+ 
+
+ 
+ 
+ 
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+CREATE OR REPLACE PACKAGE equitable_salaries_pkg 
+IS 
+   PROCEDURE initialize; 
+ 
+   PROCEDURE add_employee_info ( 
+      employee_id_in IN employees.employee_id%TYPE 
+    , salary_in IN employees.salary%TYPE 
+   ); 
+ 
+   PROCEDURE make_equitable; 
+END equitable_salaries_pkg; 
+
+
+CREATE OR REPLACE PACKAGE BODY equi_sal_pkg   
+IS   
+   TYPE temp_t IS RECORD (   
+      suempid   sumo_employees.suempid%TYPE,   
+    , susalary  sumo_employees.susalary%TYPE   
+   );   
+   
+   TYPE temp_r IS TABLE OF temp_t INDEX BY PLS_INTEGER;   
+   
+    temp_l temp_r ;   
+   g_corrections_in_process   BOOLEAN      := FALSE; 
+   
+   PROCEDURE initialize   
+   IS   
+   BEGIN   
+      temp_l.DELETE;   
+   END initialize;   
+   
+   PROCEDURE finished_corrections   
+   IS   
+   BEGIN   
+      g_corrections_in_process := FALSE;   
+   END finished_corrections;   
+   
+   PROCEDURE starting_corrections   
+   IS   
+   BEGIN   
+      g_corrections_in_process := TRUE;   
+   END starting_corrections;   
+   
+   FUNCTION corrections_in_process   
+      RETURN BOOLEAN   
+   IS   
+   BEGIN   
+      RETURN g_corrections_in_process;   
+   END corrections_in_process;   
+   
+   PROCEDURE add_employee_info (   
+      suempid IN sumo_emp.suempid%TYPE, 
+      susalary IN sumo_emp.susalary%TYPE   
+   )   
+   IS   
+      l_index   PLS_INTEGER := g_emp_info.COUNT + 1;   
+   BEGIN   
+      IF NOT corrections_in_process   
+      THEN   
+         g_emp_info (l_index).suempid := employee_id_in;   
+         g_emp_info (l_index).salary := salary_in;   
+            
+         DBMS_OUTPUT.PUT_LINE ('add_employee_info: '  
+                                || g_emp_info (l_index).employee_id   
+                                || '-'   
+                                || g_emp_info (l_index).salary   
+                               );   
+      END IF;   
+   END add_employee_info;   
+   
+   PROCEDURE make_equitable   
+   IS   
+      max_allow   suempid.susalary%TYPE;   
+      l_index         PLS_INTEGER;   
+   BEGIN   
+      IF NOT corrections_in_process   
+      THEN   
+         starting_corrections;   
+   
+         SELECT MIN (susalary) * 25  INTO max_allow FROM employees;   
+   
+         DBMS_OUTPUT.PUT_LINE  ('make_equitable max allowed ' || max_allow);   
+   
+         WHILE (g_emp_info.COUNT > 0)   
+         LOOP   
+            l_index := g_emp_info.FIRST;   
+            --   
+            DBMS_OUTPUT.PUT_LINE ('make_equitable emp id and salary: '  
+                                   || g_emp_info (l_index).suempid   
+                                   || '-'   
+                                   || g_emp_info (l_index).susalary   
+                                  );   
+   
+            IF max_allow < g_emp_info (l_index).susalary   
+            THEN   
+               UPDATE sumo_emp   
+                  SET susalary = max_allow  
+                WHERE suempid = g_emp_info (l_index).sumoempid;   
+            END IF;   
+   
+            g_emp_info.DELETE (g_emp_info.FIRST);   
+         END LOOP;   
+   
+         finished_corrections;   
+      END IF;   
+   END make_equitable;   
+END equi_sal_pkg;
+
+
+CREATE OR REPLACE TRIGGER equitable_salaries_bstrg 
+   before INSERT OR UPDATE  
+   ON employees 
+BEGIN 
+   LOCK TABLE employees IN EXCLUSIVE MODE; 
+   equitable_salaries_pkg.initialize; 
+END; 
+
+
+CREATE OR REPLACE TRIGGER equitable_salaries_rtrg  
+   AFTER INSERT OR UPDATE OF salary  
+   ON employees  
+   FOR EACH ROW  
+BEGIN  
+   equitable_salaries_pkg.add_employee_info (:NEW.employee_id, :NEW.salary);  
+END; 
+
+CREATE OR REPLACE TRIGGER equitable_salaries_astrg  
+   AFTER INSERT OR UPDATE   
+   ON employees  
+BEGIN  
+   equitable_salaries_pkg.make_equitable;  
+END; 
+
+
+CREATE OR REPLACE PACKAGE equi_sal_pkg 
+is 
+   procedure initialize ;
+   
+   procedure add_emp( 
+      suempid_t sumo_emp.suempid%type, 
+      susalary_t sumo_emp.susalary%type,
+      suempname_t  sumo_emp.suempname%type
+   );
+ 
+   procedure make_equitable;
+end equi_sal_pkg; 
+/
+
+CREATE OR REPLACE PACKAGE BODY equi_sal_pkg   
+IS   
+   type temp_t is record (   
+      suempid  sumo_employees.suempid%type,   
+     susalary  sumo_employees.susalary%type ,
+    suempname  sumo_emp.suempname%type
+   );   
+   
+   TYPE temp_r IS TABLE OF temp_t INDEX BY PLS_INTEGER;   
+   
+    temp_l temp_r ;   
+   g_corrections_in_process   BOOLEAN  := FALSE; 
+   
+   PROCEDURE initialize   
+   IS   
+   BEGIN   
+      temp_l.delete;   
+   end initialize; 
+   
+   PROCEDURE finished_corrections   
+   IS   
+   BEGIN   
+      g_corrections_in_process := false;   
+   end finished_corrections;   
+   
+   PROCEDURE starting_corrections   
+   IS   
+   BEGIN   
+      g_corrections_in_process := true;   
+   end starting_corrections;   
+   
+   FUNCTION corrections_in_process   
+      RETURN BOOLEAN   
+   IS   
+   BEGIN   
+      RETURN g_corrections_in_process;   
+   END corrections_in_process;   
+   
+   PROCEDURE add_emp (   
+      suempid in sumo_emp.suempid%type, 
+      susalary in sumo_emp.susalary%type,
+      suempname in sumo_emp.suempname%type
+   )   
+   IS   
+      l_index   PLS_INTEGER := g_emp_info.COUNT + 1;   
+   BEGIN   
+      IF NOT corrections_in_process   
+      then   
+         g_emp_info (l_index).suempid := suempid_t;   
+         g_emp_info (l_index).salary := susalary_t;   
+            
+         dbms_output.put_line ('add_employee_info: '  
+                                || g_emp_info (l_index).suempid   
+                                || '-'   
+                                || g_emp_info (l_index).susalary   
+                               );   
+      end if;   
+   end add_emp;  
+  
+   
+   PROCEDURE make_equitable   
+   IS   
+      max_allow   suempid.susalary%TYPE;   
+      l_index         PLS_INTEGER;   
+   BEGIN   
+      IF NOT corrections_in_process   
+      THEN   
+         starting_corrections;   
+   
+         SELECT MIN (susalary) * 25  INTO max_allow FROM employees;   
+   
+         DBMS_OUTPUT.PUT_LINE  ('make_equitable max allowed ' || max_allow);   
+   
+         WHILE (g_emp_info.COUNT > 0)   
+         LOOP   
+            l_index := g_emp_info.FIRST;   
+            --   
+            DBMS_OUTPUT.PUT_LINE ('make_equitable emp id and salary: '  
+                                   || g_emp_info (l_index).suempid   
+                                   || '-'   
+                                   || g_emp_info (l_index).susalary   
+                                  );   
+   
+            IF max_allow < g_emp_info (l_index).susalary   
+            THEN   
+               update sumo_emp   
+                  SET suempname = 'jess'
+                WHERE suempid = g_emp_info (l_index).sumoempid;   
+            END IF;   
+   
+            g_emp_info.DELETE (g_emp_info.FIRST);   
+         END LOOP;   
+   
+         finished_corrections;   
+      END IF;   
+   end make_equitable;   
+ end equi_sal_pkg;
+
+
+CREATE OR REPLACE TRIGGER equitable_salaries_bstrg 
+   before INSERT OR UPDATE  
+   ON employees 
+BEGIN 
+   LOCK TABLE employees IN EXCLUSIVE MODE; 
+   equi_sal_pkg.initialize; 
+end; 
+
+
+CREATE OR REPLACE TRIGGER equitable_salaries_rtrg  
+   AFTER INSERT OR UPDATE OF salary  
+   ON employees  
+   FOR EACH ROW  
+begin  
+   equi_sal_pkg.add_emp (:new.suempid, :new.susalary);  
+end; 
+
+
+CREATE OR REPLACE TRIGGER equitable_salaries_astrg  
+   AFTER INSERT OR UPDATE ON employees  
+BEGIN  
+   equi_sal_pkg.make_equitable;  
+end; 
+/
+
+
+

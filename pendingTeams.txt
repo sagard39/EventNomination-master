@@ -1,0 +1,119 @@
+select * from REBOOT35_#CBFT783TR.PHOTO_DETAILS;
+
+HP  First				11100	30067500	30067501	30067260	30067261	30067500	25-JUL-18	AP	31976260
+Fuelling with Fitness	11100	30067260	30067261	31951170	31952130				25-JUL-18	AP	31970140
+
+Team-SAKHARKAR HARSHAL VASANTRAO	48000	31919820				31926330	24-AUG-18	AP	31926330
+Team-RAJEEVKUMAR BHASIN	11100	35417650				31926330	24-AUG-18	AP	31926330
+
+
+I , as an Independent Event Auditor of #Hum Fit Toh HP Fit Challenge 2018, hereby certify that the nomination process which constitutes the closing of Phase I for the #HUM FIT TOH HP FIT has been fair and unbiased.
+
+select distinct email from empmaster where grade not in ('10I','10X','10Y') and  emp_no in (
+select emp_no from nomination where evtnme ='2018_126_event' and flag!='X' );
+
+
+select distinct email from (
+select  a.emp_no,(select email from empmaster where emp_no =a.emp_no and grade not in ('10X','10Y','11Y')) email from nomination_query a
+where emp_no not in (
+select mem1 from nomination_team where mem1 is not null
+union
+select mem2 from nomination_team where mem2 is not null
+union
+select mem3 from nomination_team  where mem3 is not null
+union
+select mem4 from nomination_team where mem4 is not null
+));
+
+
+Mismatched entries-
+
+select a.emp_no, count(a.emp_no) as depCount,b.ticktscnt,b.modifydte from nomination_dependents a left join nomination b on a.emp_no=b.emp_no and a.event_name=b.evtnme
+where a.event_name ='2018_134_event' and b.flag ='S'
+group by a.emp_no, b.ticktscnt, b.modifydte having count(a.emp_no) <> b.ticktscnt order by modifydte desc  ;
+
+mismatched Entries from dependents table in hum fit toh hp fit event
+
+sql > select emp_no from nomination where emp_no in(
+	select emp_no from nomination a where evtnme ='2018_126_event' and  ticktscnt <>
+	(select count(child_name) from nomination_dependents where event_name ='2018_126_event' and emp_no =a.emp_no )
+	and a.flag in('A','S') and ticktscnt ='2') and  evtnme ='2018_126_event' ;
+
+	output ----
+ 
+Entries in Nomination Table ==2 and in dependents table =1
+'31966960'
+,'31978430'
+,'31961390'
+,'30072340'
+,'30047140' - 2
+,'35414480' - 2
+,'35294420' - 2
+
+
+Entries in Nomination Table  ==1 and in dependents  table =2
+
+
+30035840
+31925740
+31952160
+31954800
+31956610
+35418220
+35418790
+35418840
+35419640
+39822240
+
+
+
+---2 employees status has been updated from "A" to "S" ----'30035840','31946520' 
+
+
+
+
+------single entries in JDEP--
+
+31966960
+31978430
+31961390
+
+------30072340 ---Status IA in JDEp
+
+---------------------------------------------------IPA Changes--------
+
+Few changes / development are suggested below.
+
+ 
+
+1.  Change in Routing
+
+ 
+
+Kindly update the  New Mapping w.e.f. 01-09-2018 . FC at RO Level
+
+RO Level FC only to be added where RM is approving authority (i.e if NRM is above Rs 2000).
+
+Other Mapping need not to be change. i.e RO level FC not to be included if NRM is Less than Rs 2000 , i.e where Approving authority is Zonal Head , CGM-Sales & ED-LPG.
+
+ 
+
+2.  Discount uploads from IPA Portal
+
+ 
+
+After approving of discount in IPA portal , Discount upload menu to be provided to SO/Regional Manager to directly push the discount in JDE with flexibility to reduce the discount amount than the approved amount, but not above the approved amount
+
+It should have validation checks so that double or multiple discount are not entered. It should have some flag if discount is already uploaded in JDE
+
+ 
+
+3.  Additional Development
+
+1.    System should show Last Month Sales in MT & Discount in Rs /MT (both from JDE) in approval/ recommendation menu so that user can view while approving or recommending the proposal.
+
+2.    One Menu is required with from date-to date & drop –down ( All India/ Zones/ Regional Offices/Sales Area) , where customer wise –month wise Committed Sales, Actual Sales , Discount approved & discount uploaded should be generated and facility to export in excel.
+
+ 
+
+4.  IPA menu to be provided to in Business link (just above the LPG Application)

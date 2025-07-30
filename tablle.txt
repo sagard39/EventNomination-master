@@ -1,0 +1,24 @@
+CREATE TABLE CRICKET_CAMP
+  (
+   EMP_NO    VARCHAR2(8 BYTE) NOT NULL ENABLE,
+    EMP_NAME   VARCHAR2(80 BYTE),
+    LOCTN      VARCHAR2(25 BYTE),
+    DEPARTMENT VARCHAR2(75 BYTE),
+    EMAIL      VARCHAR2(50 BYTE),
+    TELPHONE   VARCHAR2(30 BYTE),
+    CHILD_NAME VARCHAR2(80 BYTE) NOT NULL ENABLE,
+   CHIL_DOB DATE,
+    AGE        VARCHAR2(5 BYTE),
+    SHIRT_SIZE VARCHAR2(3 BYTE),
+    AGE_GTP   VARCHAR2(10 BYTE),
+    ENTER_DATE DATE,
+    CONSTRAINT "CRICKET_CAMP_PK" PRIMARY KEY ("EMP_NO", "CHILD_NAME") 
+  )
+
+/________________/
+Grant select access on---
+-empmaster
+-jde_emailid
+-HRISADMIN.emp_tel_dir_temp
+-jdep
+/__________________/

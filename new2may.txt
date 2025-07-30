@@ -1,0 +1,40 @@
+
+select * from arfc1_mstr_gm where FROM_DT='01-Apr-18' and to_dt='31-Mar-19'
+rownum<10 emp_no='31908900'
+update arfc1_mstr_gm set FYEAR='2018-2019' where where FROM_DT='01-Apr-18' and to_dt='31-Mar-19'
+select * from arfc1_mstr_gm where emp_no='3190890'
+update arfc1_mstr_gm set emp_no='31908900' where emp_no='3190890'
+
+select * from EP_MEMBER_DETAILS where proposal_id in (
+select proposal_id from EP_PROPOSAL_DETAILS where committee='REGIONAL BIDS COMMITTEE RANCHI'
+) and consent is null and emp_no='31949890'
+
+
+select * from HRD1_H78034.HRD1_cr where fyear='2017-2018' and emp_no='31969490' and CRNO=1764
+
+
+select * from HRD1_H78034.HRD1_targets where fyear='2017-2018' and emp_no='31969490' ;
+select * from HRD1_H78034.HRD1_main where fyear='2017-2018' and emp_no='31941210' ;
+update HRD1_H78034.HRD1_main set CRSTATUS='CR Created' where fyear='2017-2018' and emp_no='31941210' ;
+
+--and FROMDT='01-JUL-18'  and fyear='2018-2019'  type='mega' 
+select * from HRD1_H78034.HRD1_TRAINING where fyear='2018-2019';
+select * from BUSINESSTS_47C50N.BTS2_TI_ENTRY where ti_id='2018_0154251_T';
+
+select * from HRD1_H78034.HRD1_TARGETS where fyear='2017-2018' and stretch_action in ('ap','aa','ca') and emp_no in (
+select emp_no from HRD1_H78034.HRD1_main where fyear='2017-2018' and status_id=22) and (stretch_comments_ro is null or stretch_comments_emp is null);
+
+select * from HRD1_H78034.HRD1_ACTION_HISTORY where fyear='2017-2018' and status=13 and emp_no in (
+select emp_no from HRD1_H78034.HRD1_ACTION_HISTORY where fyear='2017-2018' and status=22 and UPDATE_DT<'17-Apr-18'
+);
+select * from HRD1_H78034.HRD1_main where fyear='2017-2018' and emp_no='31969900';
+select * from BUSINESSTS_47C50N.BTS2_ti_entry where ti_id='2018_0147976';
+select * from HARPREET.HRD1_TARGETS where fyear='2017-2018';
+
+select * from HRD1_H78034.hrd1_status
+select status_id, count(status_id) from HRD1_H78034.HRD1_main where fyear='2017-2018' and emp_no in (
+select emp_no from HRD1_H78034.HRD1_targets where stretch_action='aa' ) group by status_id
+where fyear='2017-2018' and STRETCH_TARGET is not null and WEIGHTAGE>0 and upper(STRETCH_TARGET) not in ('Y','N','NULL','N.A.','NIL','NILL','YES') 
+
+update HRD1_H78034.HRD1_targets set stretch_target='', STRETCH_COMMENTS='', STRETCH_ACTION='', STRETCH_COMMENTS_EMP='', STRETCH_COMMENTS_RO=''
+where fyear='2017-2018' and category='Learning and Growth' and STRETCH_TARGET is not null and upper(STRETCH_TARGET) not in ('NULL','Y','N');

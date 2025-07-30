@@ -1,0 +1,128 @@
+download the “Feedback Report
+http://rs924.pbsrc.com/albums/ad86/arichanz0rz/Backgrounds%20and%20animations/mp_nightstars.gif~c200
+
+--------------------29-May-2018-----------------
+
+Max Tickets per Employee : 7
+Event Available for : Employee, Dependent, Others : Employee and dependents
+Event Category :management/Non Management : Both management and Non-management
+
+
+Total Tickets per Employee.
+
+Event Available for : Employee,Dependent,Others
+
+Event Category :management/Non Management/Both
+
+
+
+
+
+
+
+--------------------
+Please find below the data:
+
+Event Allowed for : Solapur Based employees
+
+Event Name : Visit to Sayajiraje Park, Akluj
+
+Event Date : 3rd June’18
+
+Last Date for Online Application : 2nd June’18
+
+Maximum Participants : 150
+
+Price Per Ticket : 500
+
+Event Category(Gender) : Both
+
+Age Criteria : Nil
+
+Choose First Admin For Event : Pranjal Agarwal (31969140)
+
+Choose Second Admin For Event : Inderpreet Singh Oberoi (31980040)
+
+Choose Third Admin For Event : Sontakke Krishna Mahadeo (30078090)
+
+
+
+1.	Dependent details are not reflecting correctly. My wife is registered as my dependent in JDE. Her name is not reflecting.--
+"It is development data ,in production it will populate properly"
+2.	In the “gender” dropdown, pls add “Third Gender” =----?
+3.	Submit button is not available for submitting Feedback.  ---done
+4.	“Reports” section at the top right corner is to be renamed as “Gallery” --done
+5.	Login Screen needs to be made attractive. Font of ‘Employee Connect’ needs to be changed.
+6.	While adding an event and filling the event name, if delete button/arrow is pressed, error message is popping up. ------done
+7.	Pls give bigger space for the section “Event allowed for employees of” --- "by double click it gets automaticlly big in size"
+8.	Error is popping up upon clicking “Add event and publish” – though the event is getting created but the bus boarding points are not getting displayed while nominating for the event.  -----?? checked ,but no issue
+
+---------------------------
+
+15-May-2018
+-------------------
+CREATE TABLE NOMINATION_SUPER 
+(
+  EMP_NO VARCHAR2(8) NOT NULL 
+, ROLE VARCHAR2(20) NOT NULL 
+, CREATED_DATE DATE
+, UPDATED_BY  VARCHAR2(8)
+, CONSTRAINT NOMINATION_SUPER_PK PRIMARY KEY 
+  (
+    EMP_NO 
+  , ROLE 
+  )
+  ENABLE 
+);
+
+
+
+
+-----------------------------------------------------------------------------
+
+http://10.90.147.219/logreader/Browser.jsp?sort=1&file=E%3A%5CTomcat%5Clogs%5Clocalhost.2018-05-14.log
+
+http://10.90.162.30:9080/erpportal/isql/index.html
+
+--got it
+delete
+•	Namrata Kamat (2 tickets)
+•	Sreenivasa Rao Potu (2 tickets)
+•	Pushkar V Tabhane (2 tickets)
+•	Thotada Ramadevi 
+Sudhandhu Kumar 
+
+change -
+Yogesh Jadhav 6 --> 3
+shipra 3-->2
+
+
+
+1. Login page -> “EMPLOYEE CONNECT” font to be changed and made bigger.  -----done 
+2. Home screen -> “EMPLOYEE CONNECT” alignment to be adjusted (Left + Center)---done
+3. On clicking on nomination/admin, the dropdown appears in Black color and is not visible. It needs to be corrected.--done
+4. Picture gallery for individual events is not available. It can be linked with the below:
+https://team.hpcl.in/sites/NIGall/_layouts/pictlib/Menu.aspx
+
+5. Option to download the data (photo/adhar etc.) submitted by employees is to be provided.---done
+6. In the Event Date section, pls include :   ------done
+a. From date
+b. To date
+7. For each activity/event, option of viewing the feedback provided by employees is to be provided. -----done
+
+
+4:10 PM
+
+
+
+
+
+
+
+
+8. In the edit event section, option to add/delete locations is to be provided.
+
+
+4:13 PM
+
+-----------------------------------------------

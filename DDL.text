@@ -1,0 +1,124 @@
+--------------------------------------------------------
+--  DDL for Table NOMINATION_ADDITION
+--------------------------------------------------------
+
+  CREATE TABLE WORKFLOW.NOMINATION_ADDITION 
+   (
+	EVT_ID VARCHAR2(20 BYTE), 
+	LBL_NAME VARCHAR2(200 BYTE), 
+	LBL_TYPE VARCHAR2(500 BYTE), 
+	DEF_VALUE VARCHAR2(1000 BYTE), 
+	ID VARCHAR2(20 BYTE), 
+	ISMANDATE VARCHAR2(20 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Trigger TRIG_NOMINATION
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER WORKFLOW.TRIG_NOMINATION 
+   before insert on WORKFLOW.NOMINATION_ADDITION 
+   for each row 
+begin  
+   if inserting then 
+      if :NEW.ID is null then 
+         select SEQ_NM1.nextval into :NEW.ID from dual; 
+      end if; 
+   end if; 
+end;
+
+/
+ALTER TRIGGER WORKFLOW.TRIG_NOMINATION ENABLE;
+
+--------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------
+--  DDL for Table NOMINATION_BP
+--------------------------------------------------------
+
+  CREATE TABLE WORKFLOW.NOMINATION_BP 
+   (	EVT_ID VARCHAR2(20 BYTE), 
+	BUS_FACILITY VARCHAR2(20 BYTE), 
+	BOARDING_POINT VARCHAR2(200 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Index NOMINATION_BP_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX WORKFLOW.NOMINATION_BP_PK ON WORKFLOW.NOMINATION_BP (EVT_ID) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE PAYROLL ;
+--------------------------------------------------------
+--  Constraints for Table NOMINATION_BP
+--------------------------------------------------------
+
+  ALTER TABLE WORKFLOW.NOMINATION_BP ADD CONSTRAINT NOMINATION_BP_PK PRIMARY KEY (EVT_ID)
+ 
+  ALTER TABLE WORKFLOW.NOMINATION_BP MODIFY (EVT_ID NOT NULL ENABLE);
+
+ ------------------------------------------------------------------------------------------------------------------------------------- 
+ --------------------------------------------------------
+--  DDL for Table NOMINATION_EMP_ADD
+--------------------------------------------------------
+
+  CREATE TABLE WORKFLOW.NOMINATION_EMP_ADD 
+   (	ID VARCHAR2(20 BYTE), 
+	VALUE VARCHAR2(200 BYTE), 
+	EMP_NO VARCHAR2(20 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Index NOMINATION_EMP_ADD_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX WORKFLOW.NOMINATION_EMP_ADD_PK ON WORKFLOW.NOMINATION_EMP_ADD (ID, EMP_NO);
+--------------------------------------------------------
+--  Constraints for Table NOMINATION_EMP_ADD
+--------------------------------------------------------
+
+  ALTER TABLE WORKFLOW.NOMINATION_EMP_ADD ADD CONSTRAINT NOMINATION_EMP_ADD_PK PRIMARY KEY (ID, EMP_NO);
+  ALTER TABLE WORKFLOW.NOMINATION_EMP_ADD MODIFY (EMP_NO NOT NULL ENABLE);
+  ALTER TABLE WORKFLOW.NOMINATION_EMP_ADD MODIFY (ID NOT NULL ENABLE);
+  
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------
+--  DDL for Table NOMINATION_ADMIN
+--------------------------------------------------------
+
+alter table nomination_admin add(
+	EVT_ID VARCHAR2(100 BYTE), 
+	EVT_FOR VARCHAR2(20 BYTE), 
+	BUS_FACILITY VARCHAR2(20 BYTE), 
+	EVT_DATE DATE, 
+	EVT_BU VARCHAR2(1000 BYTE), 
+	STATUS VARCHAR2(1 BYTE), 
+	EVT_CAT VARCHAR2(20 BYTE), 
+	AGE_CRITERIA VARCHAR2(20 BYTE)
+);
+alter table nomination_admin modify(EVTPLACE varchar2(2000));
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table NOMINATION_BU
+--------------------------------------------------------
+
+  CREATE TABLE WORKFLOW.NOMINATION_BU 
+   (	
+   EVT_ID VARCHAR2(20 BYTE), 
+	BU VARCHAR2(500 BYTE), 
+	EVT_FOR VARCHAR2(20 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Index NOMINATION_BU_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX WORKFLOW.NOMINATION_BU_PK ON WORKFLOW.NOMINATION_BU (EVT_ID);
+--------------------------------------------------------
+--  Constraints for Table NOMINATION_BU
+--------------------------------------------------------
+
+  ALTER TABLE WORKFLOW.NOMINATION_BU ADD CONSTRAINT NOMINATION_BU_PK PRIMARY KEY (EVT_ID);
+  ALTER TABLE WORKFLOW.NOMINATION_BU MODIFY (EVT_FOR NOT NULL ENABLE);
+  ALTER TABLE WORKFLOW.NOMINATION_BU MODIFY (EVT_ID NOT NULL ENABLE);

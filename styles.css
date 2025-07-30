@@ -1,0 +1,261 @@
+/*--------------------------------------------------------------
+Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
+
+/*--------------------------------------------------------------
+Header styles minus menu
+--------------------------------------------------------------*/
+.masthead {
+    /* background: #6495ED; */
+	background:#658DB5;
+}
+#masterheader{
+	font-size : 50px;
+	text-align:center;
+	color:#fff;
+	font-family:algerian;
+}
+
+
+.main-menu {
+  /* padding: .0em 1em; */
+  color: white;
+  background: hsl(0, 0%, 15%);
+}
+
+/* mq 40em */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: background: hsl(0, 0%, 15%);
+}
+
+ul li {
+  display: block;
+  position: relative;
+  float: left;
+  background:background: hsl(0, 0%, 15%);
+}
+
+
+/* This hides the dropdowns */
+
+
+li ul { display: none; }
+
+ul li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fff;
+}
+
+ul li a:hover { background: hsl(0, 0%, 25%); }
+
+/* Display the dropdown */
+
+
+li:hover > ul {
+  display: block;
+  position: absolute;
+  z-index:1;
+}
+
+li:hover li { float: none; }
+
+li:hover a { background: hsl(0, 0%, 25%); }
+
+li:hover li a:hover {background: hsl(0, 0%, 25%);}
+
+.main-navigation li ul li { border-top: 0; }
+
+/* Displays second level dropdowns to the right of the first level dropdown */
+
+
+ul ul ul {
+  left: 100%;
+  top: 0;
+}
+
+/* Simple clearfix */
+
+
+
+ul:before,
+ul:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+ul:after { clear: both; }
+
+
+/*--------------------------------------------------------------
+Base styles that apply to all menu items
+--------------------------------------------------------------*/
+/* .menu-section {
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid hsl(0, 0%, );
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: hsl(0, 0%, 15%);
+}
+
+.menu li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: .6em 1em;
+}
+
+
+.menu li a:hover {
+  background: hsl(0, 0%, 25%);
+} */
+
+
+/* Styles for Single Level Menu */
+/* @media screen and (max-width: 30em){
+  .multi-level-nav ul ul li a {
+    padding-left: 2em;
+  }
+
+  .dropdown-toggle {
+    display: none;
+  }
+}
+ */
+ @media screen and (min-width: 30em){
+  /* .multi-level-nav ul {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+  } 
+
+  .multi-level-nav li {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 0 auto;
+            -ms-flex: 1 0 auto;
+                flex: 1 0 auto;
+    position: relative;
+  } */
+
+ /* li.has-children > a {
+    padding-right: 0;
+  }
+
+  .multi-level-nav ul ul {
+    display: none;
+    position: absolute;
+    z-index:100;
+  }
+
+  .multi-level-nav ul ul li {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 1 auto;
+            -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+  }
+
+  .multi-level-nav ul .toggled-on {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+*/
+
+/* For Dailog */
+
+.ui-widget {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: .8em;
+}
+
+.ui-widget-content {
+    background: #F9F9F9;
+    border: 1px solid #90d93f;
+    color: #222222;
+}
+
+.ui-dialog {
+    left: 0;
+    outline: 0 none;
+    padding: 0 !important;
+    position: absolute;
+    top: 0;
+
+}
+
+#dialog {
+    
+}
+
+.ui-dialog .ui-dialog-content {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    overflow: auto;
+    position: relative;
+    padding: 10 !important;
+}
+
+.ui-widget-header {
+    background: #EBF1FA;
+    border: 0;
+    color: #fff;
+    font-weight: normal;
+    
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    padding: 0.1em .5em;
+    position: relative;
+    font-size: 1em; 
+}
+ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-draggable ui-resizable{
+width:100%;
+}
